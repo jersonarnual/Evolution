@@ -1,0 +1,85 @@
+﻿@using  Evolution.UI.Models.ViewModel;
+@model PedidoViewModel
+@{
+    ViewData["Title"] = "Editar Producto";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <h3> Editar Producto</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <form asp-action="Update" asp-controller="Pedido" method="post" enctype="multipart/form-data">
+                <input type="hidden" asp-for="Id">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<div class="form-group">
+                    <div class="col-md-4 mb-3">
+                        <label asp-for="PedVrUnit" class="control-label"></label>
+                        <input type="text" asp-for="PedVrUnit" class="form-control" >
+                        <span asp-validation-for="PedVrUnit" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-4 mb-3">
+                        <label asp-for="PedCant" class="control-label"></label>
+                        <input type="text" asp-for="PedCant" class="form-control" >
+                        <span asp-validation-for="PedCant" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-4 mb-3">
+                        <label asp-for="PedSubTot" class="control-label"></label>
+                        <input type="text" asp-for="PedSubTot" class="form-control" >
+                        <span asp-validation-for="PedSubTot" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-4 mb-3">
+                        <label asp-for="PedIVA" class="control-label"></label>
+                        <input type="text" asp-for="PedIVA" class="form-control" >
+                        <span asp-validation-for="PedIVA" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-4 mb-3">
+                        <label asp-for="PedTotal" class="control-label"></label>
+                        <input type="text" asp-for="PedTotal" class="form-control" >
+                        <span asp-validation-for="PedTotal" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-4 mb-3">
+                        <label asp-for="PedUsu" class="control-label"></label>
+                        <select asp-for="PedUsu" class="form-control"
+                                asp-items="@ViewBag.ListUsuario">
+                            <option value="">-- Select item --</option>
+                        </select>
+                        <span asp-validation-for="PedUsu" class="text-danger" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-4 mb-3">
+                        <label asp-for="PedProd" class="control-label"></label>
+                        <select asp-for="PedProd" class="form-control"
+                                asp-items="@ViewBag.ListProducto">
+                            <option value="">-- Select item --</option>
+                        </select>
+                        <span asp-validation-for="PedProd" class="text-danger" />
+                    </div>
+                </div>
+                <hr>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-primary" value="Editar">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+
+    <partial name="_ValidationScriptsPartial" />
+}

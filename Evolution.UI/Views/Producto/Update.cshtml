@@ -1,0 +1,45 @@
+﻿@using  Evolution.UI.Models.ViewModel;
+@model ProductoViewModel
+@{
+    ViewData["Title"] = "Editar Producto";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <h3> Editar Producto</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <form asp-action="Update" asp-controller="Producto" method="post" enctype="multipart/form-data">
+                <input type="hidden" asp-for="Id">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <div class="col-md-4 mb-3">
+                        <label asp-for="ProDesc" class="control-label"></label>
+                        <input type="text" asp-for="ProDesc" class="form-control" placeholder="Descripcion">
+                        <span asp-validation-for="ProDesc" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-4 mb-3">
+                        <label asp-for="ProValor" class="control-label"></label>
+                        <input type="text" asp-for="ProValor" class="form-control" placeholder="Valor">
+                        <span asp-validation-for="ProValor" class="text-danger"></span>
+                    </div>
+                </div>
+s
+                <hr>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-primary" value="Editar">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+
+    <partial name="_ValidationScriptsPartial" />
+}

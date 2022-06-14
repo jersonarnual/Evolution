@@ -1,0 +1,43 @@
+﻿@using  Evolution.UI.Models.ViewModel;
+@model UsuarioViewModel
+@{
+    ViewData["Title"] = "Registro Usuario";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <h3> Crear Nueva Usuario</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <form asp-action="Create" asp-controller="Usuario" method="post" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <div class="col-md-4 mb-3">
+                        <label asp-for="UsuNombre" class="control-label"></label>
+                        <input type="text" asp-for="UsuNombre" class="form-control" placeholder="Nombre">
+                        <span asp-validation-for="UsuNombre" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-4 mb-3">
+                        <label asp-for="UsuPass" class="control-label"></label>
+                        <input type="text" asp-for="UsuPass" class="form-control" placeholder="pass">
+                        <span asp-validation-for="UsuPass" class="text-danger"></span>
+                    </div>
+                </div>
+                <hr>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-primary" value="Registrar">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+
+    <partial name="_ValidationScriptsPartial" />
+}

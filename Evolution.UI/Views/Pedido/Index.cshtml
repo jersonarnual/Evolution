@@ -1,0 +1,66 @@
+﻿@using  Evolution.UI.Models.ViewModel;
+@model PedidoViewModel
+@{
+    ViewData["Title"] = "Producto";
+}
+<div class="container">
+    @if (TempData["message"] != null)
+    {
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            @TempData["message"]
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    }
+    <div class="row">
+        <div class="col-sm-6">
+            <h3> Listado</h3>
+        </div>
+        <div class="col-sm-6">
+            <a class="btn btn-success d-block" asp-action="Create" asp-controller="Pedido">Crear nuevo registro</a>
+        </div>
+    </div>
+    <hr>
+    <div class="row justify-content-center">
+        @if (Model?.ListPedido?.Count() > 0)
+        {
+            <table class="table table-bordered table-striped" id="Table">
+                <thead>
+                    <tr>
+                        <td>@Html.DisplayNameFor(m => m.PedVrUnit)</td>
+                        <td>@Html.DisplayNameFor(m => m.PedCant)</td>
+                        <td>@Html.DisplayNameFor(m => m.PedSubTot)</td>
+                        <td>@Html.DisplayNameFor(m => m.PedIVA)</td>
+                        <td>@Html.DisplayNameFor(m => m.PedTotal)</td>
+                        <td>@Html.DisplayNameFor(m => m.Usuario.UsuNombre)</td>
+                        <td>@Html.DisplayNameFor(m => m.Producto.ProDesc)</td>
+                        <td>Acciones</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.ListPedido)
+                    {
+                        <tr>
+                            <td>@item.PedVrUnit</td>
+                            <td>@item.PedCant</td>
+                            <td>@item.PedSubTot</td>
+                            <td>@item.PedIVA</td>
+                            <td>@item.PedTotal</td>
+                            <td>@item.Usuario.UsuNombre</td>
+                            <td>@item.Producto.ProDesc</td>
+                            <td>
+                                <a asp-controller="Pedido" asp-action="Update" asp-route-id="@item.Id" class="btn btn-warning">Editar</a>
+                                <a asp-controller="Pedido" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Eliminar</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <p>No se encuentra registros </p>
+        }
+    </div>
+</div>
